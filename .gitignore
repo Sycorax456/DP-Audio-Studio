@@ -1,0 +1,16 @@
+# Programas de terceros (se descargan desde Ajustes > Dependencias)
+assets/*.exe
+assets/*.dll
+assets/*.part
+
+# Ajustes y registros locales
+dp_studio_settings.json
+wmv_audio_replacer.json
+*.log
+*.bak
+
+# Python / PyInstaller
+__pycache__/
+*.pyc
+build/
+dist/
