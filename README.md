@@ -63,6 +63,40 @@ python -m PyInstaller --noconfirm --clean DP_Audio_Studio.spec
 | `assets/` | Imágenes e icono (los programas de terceros se descargan aquí) |
 | `extras/` | Scripts antiguos |
 
+DP Audio Studio (Deadly Premonition) Update 2.0
+====================================
+Ejecutar desde Python:   python DP_Audio_Studio.py      (necesita: pip install customtkinter pillow pygame UnityPy)
+Compilar a .exe:         python -m PyInstaller --noconfirm --clean DP_Audio_Studio.spec
+                         (el exe sale liviano y NO lleva programas de terceros; usa la carpeta assets\ de al lado)
+
+Pestañas del panel derecho: Clasificar · Reemplazar · Extraer · Videos
+  Videos = WMV Audio Replacer integrado (cambia el audio de un .wmv/.asf sin recodificar el video).
+  WMV_Audio_Replacer.py sigue funcionando solo:  python WMV_Audio_Replacer.py
+
+JSON de los bancos: <nombre del xwb>.json  ->  scnd.json, scnd2.json, bgm.json, voices.json, voice.json
+(los *.personajes.json viejos se siguen leyendo).
+
+assets\  imagenes + programas ajenos. El programa busca ahi ffmpeg, ffprobe, xma2encode y WMAEncodeRS.
+         Los programas ajenos NO vienen incluidos: Ajustes > Dependencias > "Descargar dependencias" los baja
+         (assets.zip de MediaFire + ffmpeg/ffprobe/ffplay oficiales) y los descomprime en assets\.
+         El .zip se descomprime solo, sin programas extra.
+         Los enlaces estan al principio de dp_dependencies.py.
+extras\  scripts viejos que ya no hacen falta.
+
+Deadly Premonition 2 (Unity 2018.4, audio FSB5)
+-----------------------------------------------
+Selector de juego arriba a la derecha (sobre el banner): "Deadly Premonition" / "Deadly Premonition 2".
+  * dp2_panel.py es el panel de DP2 (tambien corre solo:  python dp2_panel.py). Necesita UnityPy.
+  * Abrir la carpeta *_Data del juego: lista los AudioClip; extraer a WAV/OGG/MP3/FSB y reemplazar
+    (uno, o una carpeta entera por nombre). Importa en PCM16 o en Vorbis (con fsbankcl).
+  * Antes de tocar nada crea .bak de cada .assets y .resource que modifica.
+  * Dependencias extra (Ajustes > Dependencias > "Descargar dependencias"): fsbankcl.exe, libfsbvorbis.dll y
+    Qt5Core.dll (assets2, MediaFire) y vgmstream-cli.exe (GitHub). Quedan en assets\. fsbankcl necesita ademas el
+    Visual C++ 2012 (x86). Si assets2 es un .rar hace falta 7-Zip o WinRAR; como .zip no hace falta nada.
+  * assets\dp2_banner.jpg (arte) y assets\dp2_logo.png (logo con transparencia) forman el banner de DP2.
+  * La lista tiene buscador, filtro por archivo, vista previa (Reproducir; necesita vgmstream y pygame) y
+    pestañas Reemplazar / Extraer. Con la ventana angosta la lista queda arriba y el detalle abajo.
+
 ---
 
 ## English
